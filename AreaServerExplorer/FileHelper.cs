@@ -20,7 +20,7 @@ namespace AreaServerExplorer
             int pos = 0;
             while (pos  < buff.Length - 4)
             {
-                if (BitConverter.ToInt32(buff, pos) == 0x8088b1f)
+                if (isGzipMagic(buff, pos))
                     result.Add(ReadName(buff, pos + 10));
                 pos++;
             }
@@ -94,12 +94,17 @@ namespace AreaServerExplorer
             byte[] buff = new byte[4];
             fs.Read(buff, 0, 4);
             fs.Close();
-            if (buff[0] == 0x1F &&
-                buff[1] == 0x8B &&
-                buff[2] == 0x08 &&
-                buff[3] == 0x08)
-                return false;  
-            return true;
+            return !isGzipMagic(buff);
+        }
+
+        public static bool isGzipMagic(byte[] data, int start = 0)
+        {
+            if (data[start++] == 0x1F &&
+                data[start++] == 0x8B &&
+                data[start++] == 0x08 &&
+                (data[start] == 0x08 || data[start] == 0x00))
+                return true;
+            return false;
         }
 
         public static int FindPattern(byte[] buff, byte[] pat, int start = 0)
@@ -178,6 +183,36 @@ namespace AreaServerExplorer
                 result.Add(entry);
             }
             return result;
+        }
+
+        public static void ImportSubFile(string filename, string subname, byte[] data)
+        {
+            byte[] buff = Encoding.ASCII.GetBytes(subname);
+            MemoryStream m = new MemoryStream();
+            GZipStream stream = new GZipStream(m, CompressionMode.Compress);            
+            new MemoryStream(data).CopyTo(stream);
+            stream.Close();
+            byte[] cdata = m.ToArray();
+            m = new MemoryStream();
+            m.Write(cdata, 0, 3);
+            m.WriteByte(8);
+            m.Write(cdata, 4, 6);
+            m.Write(buff, 0, buff.Length);
+            m.WriteByte(0);
+            m.Write(cdata, 10, cdata.Length - 10);
+            while (m.Length % 0x800 != 0)
+                m.WriteByte(0);
+            cdata = m.ToArray();
+            byte[] buff2 = File.ReadAllBytes(filename);
+            int start = FindPattern(buff2, buff) - 10;
+            int pos = start + 1;
+            while (!isGzipMagic(buff2, pos++)) ;
+            int end = pos - 1;
+            MemoryStream result = new MemoryStream();
+            result.Write(buff2, 0, start);
+            result.Write(cdata, 0, cdata.Length);
+            result.Write(buff2, end, buff2.Length - end);
+            File.WriteAllBytes(filename, result.ToArray());
         }
     }
 

@@ -116,10 +116,6 @@ namespace AreaServerExplorer
             }
         }
 
-        private void patchIPToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
-        }
-
         private void createPNACHFileForIPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string input = Microsoft.VisualBasic.Interaction.InputBox("Please enter IP", "PNACH File Creator", "192.168.178.");
@@ -148,6 +144,20 @@ namespace AreaServerExplorer
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (listBox1.SelectedItem == null || listBox2.SelectedItem == null)
+                return;
+            string filename = basepath + listBox1.SelectedItem.ToString();
+            string fileonly = listBox2.SelectedItem.ToString();
+            string ext = "*" + Path.GetExtension(fileonly);
+            byte[] subname = Encoding.ASCII.GetBytes(fileonly);
+            OpenFileDialog d = new OpenFileDialog();
+            d.Filter = ext + "|" + ext;
+            d.FileName = fileonly;
+            if (d.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                FileHelper.ImportSubFile(filename, fileonly, File.ReadAllBytes(d.FileName));
+                MessageBox.Show("Done.");
+            }
         }
 
         private void importToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -198,6 +208,18 @@ namespace AreaServerExplorer
         {
             byte[] pat = new byte[] { 0x8A, 0x4C, 0x28, 0x5C, 0x8A, 0x54, 0x04, 0x70, 0x3A, 0xCA, 0x75, 0x42 };
             byte[] patch = new byte[] { 0x8A, 0x4C, 0x28, 0x5C, 0x8A, 0x54, 0x04, 0x70, 0x3A, 0xCA, 0x90, 0x90 };
+            PatchThisWithThat(pat, patch);
+        }
+
+        private void removeMD5CheckallBinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            byte[] pat = new byte[] { 0x8B, 0x4C, 0x24, 0x10, 0x8A, 0x14, 0x01, 0x8A, 0x4C, 0x04, 0x74, 0x3A, 0xD1, 0x75, 0x77 };
+            byte[] patch = new byte[] { 0x8B, 0x4C, 0x24, 0x10, 0x8A, 0x14, 0x01, 0x8A, 0x4C, 0x04, 0x74, 0x3A, 0xD1, 0x90, 0x90 };
+            PatchThisWithThat(pat, patch);
+        }
+
+        public void PatchThisWithThat(byte[] pat, byte[] patch)
+        {
             OpenFileDialog d = new OpenFileDialog();
             d.Filter = "*.exe|*.exe";
             if (d.ShowDialog() == System.Windows.Forms.DialogResult.OK)

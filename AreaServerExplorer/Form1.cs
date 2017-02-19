@@ -118,29 +118,6 @@ namespace AreaServerExplorer
 
         private void patchIPToolStripMenuItem_Click(object sender, EventArgs e)
         {            
-            OpenFileDialog d = new OpenFileDialog();
-            d.Filter = "*.exe|*.exe";
-            if (d.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                byte[] buff = File.ReadAllBytes(d.FileName);
-                int pos = FileHelper.FindPattern(buff, new byte[] { 0x43, 0x54, 0x61, 0x73, 0x6B, 0x47, 0x61, 0x6D, 0x65, 0x43, 0x74, 0x72, 0x6C });
-                if (pos != -1)
-                {
-                    pos += 16;
-                    string currIP = FileHelper.ReadName(buff, pos);
-                    MessageBox.Show("Current IP is: " + currIP); 
-                    string input = Microsoft.VisualBasic.Interaction.InputBox("Please enter new IP", "Patch IP", "192.168.178.");
-                    if (input != "" && input.Length < 16)
-                    {
-                        byte[] patch = Encoding.ASCII.GetBytes(input);
-                        for (int i = 0; i < patch.Length; i++)
-                            buff[pos + i] = patch[i];
-                        buff[pos + input.Length] = 0;
-                        File.WriteAllBytes(d.FileName, buff);
-                        MessageBox.Show("Done.");
-                    }
-                }
-            }
         }
 
         private void createPNACHFileForIPToolStripMenuItem_Click(object sender, EventArgs e)
@@ -166,6 +143,76 @@ namespace AreaServerExplorer
             {
                 File.WriteAllText(d.FileName, r);
                 MessageBox.Show("Done.");
+            }
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void importToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null)
+                return;
+            string filename = basepath + listBox1.SelectedItem.ToString();
+            string fileonly = Path.GetFileName(filename);
+            string ext = "*" + Path.GetExtension(fileonly);
+            OpenFileDialog d = new OpenFileDialog();
+            d.Filter = ext + "|" + ext;
+            d.FileName = fileonly;
+            if (d.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                FileHelper.EncryptFile(File.ReadAllBytes(d.FileName), filename);
+                MessageBox.Show("Done.");
+            }
+        }
+
+        private void patchIPToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog d = new OpenFileDialog();
+            d.Filter = "*.exe|*.exe";
+            if (d.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                byte[] buff = File.ReadAllBytes(d.FileName);
+                int pos = FileHelper.FindPattern(buff, new byte[] { 0x43, 0x54, 0x61, 0x73, 0x6B, 0x47, 0x61, 0x6D, 0x65, 0x43, 0x74, 0x72, 0x6C });
+                if (pos != -1)
+                {
+                    pos += 16;
+                    string currIP = FileHelper.ReadName(buff, pos);
+                    MessageBox.Show("Current IP is: " + currIP);
+                    string input = Microsoft.VisualBasic.Interaction.InputBox("Please enter new IP", "Patch IP", "192.168.178.");
+                    if (input != "" && input.Length < 16)
+                    {
+                        byte[] patch = Encoding.ASCII.GetBytes(input);
+                        for (int i = 0; i < patch.Length; i++)
+                            buff[pos + i] = patch[i];
+                        buff[pos + input.Length] = 0;
+                        File.WriteAllBytes(d.FileName, buff);
+                        MessageBox.Show("Done.");
+                    }
+                }
+            }
+        }
+
+        private void removeImportCheckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            byte[] pat = new byte[] { 0x8A, 0x4C, 0x28, 0x5C, 0x8A, 0x54, 0x04, 0x70, 0x3A, 0xCA, 0x75, 0x42 };
+            byte[] patch = new byte[] { 0x8A, 0x4C, 0x28, 0x5C, 0x8A, 0x54, 0x04, 0x70, 0x3A, 0xCA, 0x90, 0x90 };
+            OpenFileDialog d = new OpenFileDialog();
+            d.Filter = "*.exe|*.exe";
+            if (d.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                byte[] buff = File.ReadAllBytes(d.FileName);
+                int pos = FileHelper.FindPattern(buff, pat);
+                if (pos != -1)
+                {
+                    for (int i = 0; i < patch.Length; i++)
+                        buff[pos + i] = patch[i];
+                    File.WriteAllBytes(d.FileName, buff);
+                    MessageBox.Show("Done.");
+                }
+                else
+                    MessageBox.Show("Patch position not found, maybe already patched");
             }
         }
     }

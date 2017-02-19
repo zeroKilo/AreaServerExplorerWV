@@ -31,6 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToPACKBINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.hb1 = new Be.Windows.Forms.HexBox();
@@ -54,7 +56,9 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportToolStripMenuItem});
+            this.exportToolStripMenuItem,
+            this.importToolStripMenuItem,
+            this.saveToPACKBINToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -62,9 +66,23 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.exportToolStripMenuItem.Text = "Export";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.importToolStripMenuItem.Text = "Import";
+            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
+            // 
+            // saveToPACKBINToolStripMenuItem
+            // 
+            this.saveToPACKBINToolStripMenuItem.Name = "saveToPACKBINToolStripMenuItem";
+            this.saveToPACKBINToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.saveToPACKBINToolStripMenuItem.Text = "Save to PACK.BIN";
+            this.saveToPACKBINToolStripMenuItem.Click += new System.EventHandler(this.saveToPACKBINToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -142,5 +160,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private Be.Windows.Forms.HexBox hb1;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToPACKBINToolStripMenuItem;
     }
 }

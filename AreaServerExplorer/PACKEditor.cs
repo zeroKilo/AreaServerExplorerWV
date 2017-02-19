@@ -14,13 +14,6 @@ namespace AreaServerExplorer
 {
     public partial class PACKEditor : Form
     {
-        public class FileEntry
-        {
-            public string name;
-            public int offset;
-            public int size;
-        }
-
         public string filename; 
         public byte[] filebuff;
         public List<FileEntry> files;
@@ -33,24 +26,14 @@ namespace AreaServerExplorer
 
         private void PACKEditor_Load(object sender, EventArgs e)
         {
-            filebuff = FileHelper.DecryptFile(filename);
-            int count = BitConverter.ToInt32(filebuff, 4);
-            int pos = 8;
-            byte b;
-            files = new List<FileEntry>();
-            for (int i = 0; i < count; i++)
-            {
-                FileEntry entry = new FileEntry();
-                byte namelen = filebuff[pos++];
-                MemoryStream m = new MemoryStream();
-                for (int j = 0; j < namelen; j++)
-                    m.WriteByte(filebuff[pos++]);
-                entry.name = Encoding.ASCII.GetString(m.ToArray());
-                entry.offset = BitConverter.ToInt32(filebuff, pos); pos += 4;
-                entry.size = BitConverter.ToInt32(filebuff, pos); pos += 4;
-                files.Add(entry);
-            }
+            LoadStuff();
             RefreshList();
+        }
+
+        public void LoadStuff()
+        {
+            filebuff = FileHelper.DecryptFile(filename);
+            files = FileHelper.ReadFileInfos(filebuff);
         }
 
         public void RefreshList()
@@ -90,6 +73,30 @@ namespace AreaServerExplorer
                 File.WriteAllBytes(d.FileName, buff);
                 MessageBox.Show("Done.");
             }
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex == -1)
+                return;
+            string subname = listBox1.SelectedItem.ToString();
+            string ext = "*" + Path.GetExtension(subname);
+            OpenFileDialog d = new OpenFileDialog();
+            d.Filter = ext + "|" + ext;
+            d.FileName = subname;
+            if (d.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                filebuff = FileHelper.ImportIntoPack(filebuff, subname, d.FileName);
+                files = FileHelper.ReadFileInfos(filebuff);
+                RefreshList();
+                MessageBox.Show("Done.");
+            }
+        }
+
+        private void saveToPACKBINToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileHelper.EncryptFile(filebuff, filename);
+            MessageBox.Show("Done.");
         }
     }
 }

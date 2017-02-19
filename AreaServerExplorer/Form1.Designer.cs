@@ -31,7 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openAreaServerexeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.patchIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createPNACHFileForIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -48,6 +47,11 @@
             this.fileToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.extractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openInPACKEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.patchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeImportCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.patchIPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -77,8 +81,8 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openAreaServerexeToolStripMenuItem,
-            this.patchIPToolStripMenuItem,
-            this.createPNACHFileForIPToolStripMenuItem});
+            this.createPNACHFileForIPToolStripMenuItem,
+            this.patchesToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -89,13 +93,6 @@
             this.openAreaServerexeToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.openAreaServerexeToolStripMenuItem.Text = "Open AreaServer.exe";
             this.openAreaServerexeToolStripMenuItem.Click += new System.EventHandler(this.openAreaServerexeToolStripMenuItem_Click);
-            // 
-            // patchIPToolStripMenuItem
-            // 
-            this.patchIPToolStripMenuItem.Name = "patchIPToolStripMenuItem";
-            this.patchIPToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.patchIPToolStripMenuItem.Text = "Patch AreaServer IP";
-            this.patchIPToolStripMenuItem.Click += new System.EventHandler(this.patchIPToolStripMenuItem_Click);
             // 
             // createPNACHFileForIPToolStripMenuItem
             // 
@@ -116,8 +113,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.gui01);
             this.splitContainer1.Panel2.Controls.Add(this.gui02);
+            this.splitContainer1.Panel2.Controls.Add(this.gui01);
             this.splitContainer1.Size = new System.Drawing.Size(1000, 448);
             this.splitContainer1.SplitterDistance = 386;
             this.splitContainer1.TabIndex = 1;
@@ -189,7 +186,8 @@
             // fileToolStripMenuItem1
             // 
             this.fileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportToolStripMenuItem});
+            this.exportToolStripMenuItem,
+            this.importToolStripMenuItem});
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
             this.fileToolStripMenuItem1.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem1.Text = "File";
@@ -197,7 +195,7 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exportToolStripMenuItem.Text = "Export";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
@@ -257,6 +255,7 @@
             // 
             this.fileToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.extractToolStripMenuItem,
+            this.importToolStripMenuItem1,
             this.openInPACKEditorToolStripMenuItem});
             this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
             this.fileToolStripMenuItem2.Size = new System.Drawing.Size(35, 20);
@@ -276,6 +275,43 @@
             this.openInPACKEditorToolStripMenuItem.Text = "Open in PACK Editor";
             this.openInPACKEditorToolStripMenuItem.Visible = false;
             this.openInPACKEditorToolStripMenuItem.Click += new System.EventHandler(this.openInPACKEditorToolStripMenuItem_Click);
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importToolStripMenuItem.Text = "Import";
+            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
+            // 
+            // importToolStripMenuItem1
+            // 
+            this.importToolStripMenuItem1.Name = "importToolStripMenuItem1";
+            this.importToolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
+            this.importToolStripMenuItem1.Text = "Import";
+            this.importToolStripMenuItem1.Click += new System.EventHandler(this.importToolStripMenuItem1_Click);
+            // 
+            // patchesToolStripMenuItem
+            // 
+            this.patchesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.patchIPToolStripMenuItem1,
+            this.removeImportCheckToolStripMenuItem});
+            this.patchesToolStripMenuItem.Name = "patchesToolStripMenuItem";
+            this.patchesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.patchesToolStripMenuItem.Text = "Patches";
+            // 
+            // removeImportCheckToolStripMenuItem
+            // 
+            this.removeImportCheckToolStripMenuItem.Name = "removeImportCheckToolStripMenuItem";
+            this.removeImportCheckToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.removeImportCheckToolStripMenuItem.Text = "Remove Import Check (pack.bin)";
+            this.removeImportCheckToolStripMenuItem.Click += new System.EventHandler(this.removeImportCheckToolStripMenuItem_Click);
+            // 
+            // patchIPToolStripMenuItem1
+            // 
+            this.patchIPToolStripMenuItem1.Name = "patchIPToolStripMenuItem1";
+            this.patchIPToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.patchIPToolStripMenuItem1.Text = "Patch IP";
+            this.patchIPToolStripMenuItem1.Click += new System.EventHandler(this.patchIPToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -330,8 +366,12 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem extractToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openInPACKEditorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem patchIPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createPNACHFileForIPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem patchesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeImportCheckToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem patchIPToolStripMenuItem1;
     }
 }
 

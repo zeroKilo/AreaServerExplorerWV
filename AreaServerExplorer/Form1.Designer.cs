@@ -36,6 +36,7 @@
             this.patchIPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.removeImportCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMD5CheckallBinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeSavegameCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.gui01 = new System.Windows.Forms.Panel();
@@ -53,7 +54,7 @@
             this.extractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openInPACKEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeSavegameCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openInTEXTEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -135,6 +136,13 @@
             this.removeMD5CheckallBinToolStripMenuItem.Text = "Remove MD5 Check (all bin)";
             this.removeMD5CheckallBinToolStripMenuItem.Click += new System.EventHandler(this.removeMD5CheckallBinToolStripMenuItem_Click);
             // 
+            // removeSavegameCheckToolStripMenuItem
+            // 
+            this.removeSavegameCheckToolStripMenuItem.Name = "removeSavegameCheckToolStripMenuItem";
+            this.removeSavegameCheckToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.removeSavegameCheckToolStripMenuItem.Text = "Remove Savegame Check";
+            this.removeSavegameCheckToolStripMenuItem.Click += new System.EventHandler(this.removeSavegameCheckToolStripMenuItem_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -147,8 +155,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.gui01);
             this.splitContainer1.Panel2.Controls.Add(this.gui02);
+            this.splitContainer1.Panel2.Controls.Add(this.gui01);
             this.splitContainer1.Size = new System.Drawing.Size(1000, 448);
             this.splitContainer1.SplitterDistance = 386;
             this.splitContainer1.TabIndex = 1;
@@ -297,7 +305,8 @@
             this.fileToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.extractToolStripMenuItem,
             this.importToolStripMenuItem1,
-            this.openInPACKEditorToolStripMenuItem});
+            this.openInPACKEditorToolStripMenuItem,
+            this.openInTEXTEditorToolStripMenuItem});
             this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
             this.fileToolStripMenuItem2.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem2.Text = "File";
@@ -324,12 +333,12 @@
             this.openInPACKEditorToolStripMenuItem.Visible = false;
             this.openInPACKEditorToolStripMenuItem.Click += new System.EventHandler(this.openInPACKEditorToolStripMenuItem_Click);
             // 
-            // removeSavegameCheckToolStripMenuItem
+            // openInTEXTEditorToolStripMenuItem
             // 
-            this.removeSavegameCheckToolStripMenuItem.Name = "removeSavegameCheckToolStripMenuItem";
-            this.removeSavegameCheckToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.removeSavegameCheckToolStripMenuItem.Text = "Remove Savegame Check";
-            this.removeSavegameCheckToolStripMenuItem.Click += new System.EventHandler(this.removeSavegameCheckToolStripMenuItem_Click);
+            this.openInTEXTEditorToolStripMenuItem.Name = "openInTEXTEditorToolStripMenuItem";
+            this.openInTEXTEditorToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.openInTEXTEditorToolStripMenuItem.Text = "Open in TEXT Editor";
+            this.openInTEXTEditorToolStripMenuItem.Click += new System.EventHandler(this.openInTEXTEditorToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -392,6 +401,7 @@
         private System.Windows.Forms.ToolStripMenuItem patchIPToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem removeMD5CheckallBinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSavegameCheckToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openInTEXTEditorToolStripMenuItem;
     }
 }
 

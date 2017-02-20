@@ -214,6 +214,35 @@ namespace AreaServerExplorer
             result.Write(buff2, end, buff2.Length - end);
             File.WriteAllBytes(filename, result.ToArray());
         }
+
+        public static List<byte[]> ReadTEXTFile(byte[] buff)
+        {
+            List<byte[]> result = new List<byte[]>();
+            int count = BitConverter.ToInt32(buff, 0);
+            int pos = 4;
+            for (int i = 0; i < count; i++) 
+            {
+                int len = BitConverter.ToInt32(buff, pos); pos += 4;
+                byte[] buff2 = new byte[len];
+                for (int j = 0; j < len; j++)
+                    buff2[j] = buff[pos + j];
+                result.Add(buff2);
+                pos += len;
+            }
+            return result;
+        }
+
+        public static byte[] CompileTEXTEntries(List<byte[]> list)
+        {
+            MemoryStream m = new MemoryStream();
+            m.Write(BitConverter.GetBytes((int)list.Count), 0, 4);
+            foreach (byte[] entry in list)
+            {
+                m.Write(BitConverter.GetBytes((int)entry.Length), 0, 4);
+                m.Write(entry, 0, entry.Length);
+            }
+            return m.ToArray();
+        }
     }
 
     public class FileEntry

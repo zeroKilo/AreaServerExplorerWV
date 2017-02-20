@@ -51,6 +51,7 @@ namespace AreaServerExplorer
             {
                 gui02.BringToFront();
                 openInPACKEditorToolStripMenuItem.Visible = filename.ToLower().Contains("pack.bin");
+                openInTEXTEditorToolStripMenuItem.Visible = filename.ToLower().Contains("text.bin");
                 hb2.ByteProvider = new DynamicByteProvider(FileHelper.DecryptFile(filename));
             }
             else
@@ -243,6 +244,16 @@ namespace AreaServerExplorer
                 else
                     MessageBox.Show("Patch position not found, maybe already patched");
             }
+        }
+
+        private void openInTEXTEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int n = listBox1.SelectedIndex;
+            if (n == -1)
+                return;
+            TEXTEditor ed = new TEXTEditor();
+            ed.filename = basepath + listBox1.SelectedItem.ToString();
+            ed.ShowDialog();
         }
     }
 }

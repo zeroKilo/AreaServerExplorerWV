@@ -10,3 +10,4 @@ D:\CODE\GitHub\AreaServerExplorerWV\AreaServerExplorer\obj\x86\Release\AreaServe
 D:\CODE\GitHub\AreaServerExplorerWV\AreaServerExplorer\obj\x86\Release\AreaServerExplorer.exe
 D:\CODE\GitHub\AreaServerExplorerWV\AreaServerExplorer\obj\x86\Release\AreaServerExplorer.pdb
 D:\CODE\GitHub\AreaServerExplorerWV\AreaServerExplorer\obj\x86\Release\AreaServerExplorer.TEXTEditor.resources
+D:\CODE\GitHub\AreaServerExplorerWV\AreaServerExplorer\obj\x86\Release\AreaServerExplorer.InputForm.resources

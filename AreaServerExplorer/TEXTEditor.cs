@@ -46,10 +46,12 @@ namespace AreaServerExplorer
             int n = listBox1.SelectedIndex;
             if (n == -1)
                 return;
-            string input = Microsoft.VisualBasic.Interaction.InputBox("Please enter new string", "Edit entry", Encoding.UTF7.GetString(entries[n]));
-            if (input != "")
+            InputForm f = new InputForm();
+            f.result = entries[n];
+            f.ShowDialog();
+            if(f._exitOK)
             {
-                entries[n] = encoder.GetBytes(input);
+                entries[n] = f.result;
                 filebuff = FileHelper.CompileTEXTEntries(entries);
                 Reload();
                 RefreshList();

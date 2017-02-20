@@ -218,6 +218,13 @@ namespace AreaServerExplorer
             PatchThisWithThat(pat, patch);
         }
 
+        private void removeSavegameCheckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            byte[] pat = new byte[] { 0x8D, 0x4C, 0x0A, 0x7D, 0x8A, 0x14, 0x01, 0x8A, 0x1C, 0x30, 0x3A, 0xD3, 0x75, 0x10 };
+            byte[] patch = new byte[] { 0x8D, 0x4C, 0x0A, 0x7D, 0x8A, 0x14, 0x01, 0x8A, 0x1C, 0x30, 0x3A, 0xD3, 0x90, 0x90 };
+            PatchThisWithThat(pat, patch);
+        }
+
         public void PatchThisWithThat(byte[] pat, byte[] patch)
         {
             OpenFileDialog d = new OpenFileDialog();

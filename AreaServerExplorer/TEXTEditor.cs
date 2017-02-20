@@ -15,6 +15,7 @@ namespace AreaServerExplorer
         public string filename;
         public byte[] filebuff;
         public List<byte[]> entries;
+        public Encoding encoder = Encoding.GetEncoding(932);
 
         public TEXTEditor()
         {
@@ -37,7 +38,7 @@ namespace AreaServerExplorer
         {
             listBox1.Items.Clear();
             foreach (byte[] entry in entries)
-                listBox1.Items.Add(Encoding.UTF7.GetString(entry));
+                listBox1.Items.Add(encoder.GetString(entry));
         }
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace AreaServerExplorer
             string input = Microsoft.VisualBasic.Interaction.InputBox("Please enter new string", "Edit entry", Encoding.UTF7.GetString(entries[n]));
             if (input != "")
             {
-                entries[n] = Encoding.UTF7.GetBytes(input);
+                entries[n] = encoder.GetBytes(input);
                 filebuff = FileHelper.CompileTEXTEntries(entries);
                 Reload();
                 RefreshList();

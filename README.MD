@@ -1,4 +1,4 @@
-simple GUI tool to extract files from the game .hack//fr‰gment 
+simple GUI tool to extract files from the game .hack//fr√§gment 
 
 
 -Can decrypt encrypted .bin/.dat files (pack.bin, onlineevent.dat, text.bin), and back
@@ -13,11 +13,13 @@ simple GUI tool to extract files from the game .hack//fr‰gment
 
 -Can patch Area Server to not check MD5 hashes
 
+-Can patch Area Server to not check edited savegames
+
 -Can create a PNACH file for use in ps2pcx
 
 
 Screenshot:
 
-http://imgur.com/2HdVbGx
+http://imgur.com/GxKkFLe
 
-http://imgur.com/ZUuRaq6
+http://imgur.com/UIyTpwc

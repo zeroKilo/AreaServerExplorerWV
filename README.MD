@@ -15,7 +15,7 @@ simple GUI tool to extract files from the game .hack//frägment
 
 -Can patch Area Server to not check edited savegames
 
--Can create a PNACH file for use in ps2pcx
+-Can create a PNACH file for use in pcsx2
 
 
 Screenshot:

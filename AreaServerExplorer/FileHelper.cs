@@ -53,6 +53,16 @@ namespace AreaServerExplorer
             return result.ToArray();
         }
 
+        public static byte[] unzipArray(byte[] data)
+        {
+            MemoryStream result = new MemoryStream();
+            MemoryStream input = new MemoryStream(data);
+            GZipStream stream = new GZipStream(input, CompressionMode.Decompress);
+            stream.CopyTo(result);
+            stream.Close();
+            return result.ToArray();
+        }
+
         public static byte[] DecryptFile(string filename)
         {
             byte[] data = File.ReadAllBytes(filename);

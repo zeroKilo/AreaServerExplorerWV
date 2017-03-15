@@ -40,6 +40,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.gui02 = new System.Windows.Forms.Panel();
+            this.hb2 = new Be.Windows.Forms.HexBox();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.extractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,14 +54,10 @@
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.unpackAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.packFromFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hb1 = new Be.Windows.Forms.HexBox();
             this.fbd = new System.Windows.Forms.FolderBrowserDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pb1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.hb2 = new Be.Windows.Forms.HexBox();
-            this.hb1 = new Be.Windows.Forms.HexBox();
             this.status = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -93,10 +90,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openAreaServerexeToolStripMenuItem,
             this.createPNACHFileForIPToolStripMenuItem,
-            this.patchesToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.unpackAllToolStripMenuItem,
-            this.packFromFolderToolStripMenuItem});
+            this.patchesToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -194,6 +188,22 @@
             this.gui02.Name = "gui02";
             this.gui02.Size = new System.Drawing.Size(610, 426);
             this.gui02.TabIndex = 1;
+            // 
+            // hb2
+            // 
+            this.hb2.BoldFont = null;
+            this.hb2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hb2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hb2.LineInfoForeColor = System.Drawing.Color.Empty;
+            this.hb2.LineInfoVisible = true;
+            this.hb2.Location = new System.Drawing.Point(0, 24);
+            this.hb2.Name = "hb2";
+            this.hb2.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.hb2.Size = new System.Drawing.Size(610, 402);
+            this.hb2.StringViewVisible = true;
+            this.hb2.TabIndex = 1;
+            this.hb2.UseFixedBytesPerLine = true;
+            this.hb2.VScrollBarVisible = true;
             // 
             // menuStrip3
             // 
@@ -319,26 +329,21 @@
             this.importToolStripMenuItem.Text = "Import";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem1
+            // hb1
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 6);
-            // 
-            // unpackAllToolStripMenuItem
-            // 
-            this.unpackAllToolStripMenuItem.Name = "unpackAllToolStripMenuItem";
-            this.unpackAllToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.unpackAllToolStripMenuItem.Text = "Unpack to folder";
-            this.unpackAllToolStripMenuItem.Click += new System.EventHandler(this.unpackAllToolStripMenuItem_Click);
-            // 
-            // packFromFolderToolStripMenuItem
-            // 
-            this.packFromFolderToolStripMenuItem.AutoToolTip = true;
-            this.packFromFolderToolStripMenuItem.Enabled = false;
-            this.packFromFolderToolStripMenuItem.Name = "packFromFolderToolStripMenuItem";
-            this.packFromFolderToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.packFromFolderToolStripMenuItem.Text = "Pack from folder";
-            this.packFromFolderToolStripMenuItem.ToolTipText = "Not Implemented Yet!";
+            this.hb1.BoldFont = null;
+            this.hb1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hb1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hb1.LineInfoForeColor = System.Drawing.Color.Empty;
+            this.hb1.LineInfoVisible = true;
+            this.hb1.Location = new System.Drawing.Point(0, 0);
+            this.hb1.Name = "hb1";
+            this.hb1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.hb1.Size = new System.Drawing.Size(610, 295);
+            this.hb1.StringViewVisible = true;
+            this.hb1.TabIndex = 0;
+            this.hb1.UseFixedBytesPerLine = true;
+            this.hb1.VScrollBarVisible = true;
             // 
             // statusStrip1
             // 
@@ -355,38 +360,6 @@
             // 
             this.pb1.Name = "pb1";
             this.pb1.Size = new System.Drawing.Size(100, 16);
-            // 
-            // hb2
-            // 
-            this.hb2.BoldFont = null;
-            this.hb2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hb2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hb2.LineInfoForeColor = System.Drawing.Color.Empty;
-            this.hb2.LineInfoVisible = true;
-            this.hb2.Location = new System.Drawing.Point(0, 24);
-            this.hb2.Name = "hb2";
-            this.hb2.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hb2.Size = new System.Drawing.Size(610, 402);
-            this.hb2.StringViewVisible = true;
-            this.hb2.TabIndex = 1;
-            this.hb2.UseFixedBytesPerLine = true;
-            this.hb2.VScrollBarVisible = true;
-            // 
-            // hb1
-            // 
-            this.hb1.BoldFont = null;
-            this.hb1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hb1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hb1.LineInfoForeColor = System.Drawing.Color.Empty;
-            this.hb1.LineInfoVisible = true;
-            this.hb1.Location = new System.Drawing.Point(0, 0);
-            this.hb1.Name = "hb1";
-            this.hb1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.hb1.Size = new System.Drawing.Size(610, 295);
-            this.hb1.StringViewVisible = true;
-            this.hb1.TabIndex = 0;
-            this.hb1.UseFixedBytesPerLine = true;
-            this.hb1.VScrollBarVisible = true;
             // 
             // status
             // 
@@ -458,9 +431,6 @@
         private System.Windows.Forms.ToolStripMenuItem removeMD5CheckallBinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSavegameCheckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openInTEXTEditorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem unpackAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem packFromFolderToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog fbd;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar pb1;
